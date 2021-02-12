@@ -40,20 +40,20 @@ namespace Common.Utilities
             var propValue = attribute.GetType().GetProperty(property.ToString()).GetValue(attribute, null);
             return propValue.ToString();
         }
-     
+
         public static Dictionary<int, string> ToDictionary(this Enum value)
         {
             return Enum.GetValues(value.GetType()).Cast<Enum>().ToDictionary(p => Convert.ToInt32(p), q => ToDisplay(q));
         }
         public static string GetDisplayName(this Enum value)
         {
-	        var attribute = (DisplayNameAttribute)value.GetType()
-		        .GetField(value.ToString())
-		        .GetCustomAttributes(false)
-		        .Where(a => a is DisplayNameAttribute)
-		        .FirstOrDefault();
+            var attribute = (DisplayNameAttribute)value.GetType()
+                .GetField(value.ToString())
+                .GetCustomAttributes(false)
+                .Where(a => a is DisplayNameAttribute)
+                .FirstOrDefault();
 
-	        return attribute != null ? attribute.DisplayName : value.ToString();
+            return attribute != null ? attribute.DisplayName : value.ToString();
         }
     }
 

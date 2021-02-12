@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Collections.Generic;
 using System.Linq;
-using Common;
 using WebFramework.Api;
 
 namespace WebFramework.Filters
@@ -34,11 +34,11 @@ namespace WebFramework.Filters
                     var errorMessages = errors.SelectMany(p => (string[])p.Value).Distinct();
                     message = string.Join(" | ", errorMessages);
                 }
-                else if (badRequestObjectResult.Value is ValidationProblemDetails problems) 
+                else if (badRequestObjectResult.Value is ValidationProblemDetails problems)
                 {
                     var errormessages = problems.Errors.SelectMany(p => (string[])p.Value).Distinct();
-                      message = string.Join(" | ", errormessages);
-                } 
+                    message = string.Join(" | ", errormessages);
+                }
                 var apiResult = new ApiResult(false, ApiResultStatusCode.BadRequest, message);
                 context.Result = new JsonResult(apiResult) { StatusCode = badRequestObjectResult.StatusCode };
             }
@@ -57,7 +57,7 @@ namespace WebFramework.Filters
                 var apiResult = new ApiResult<object>(false, ApiResultStatusCode.NotFound, notFoundObjectResult.Value);
                 context.Result = new JsonResult(apiResult) { StatusCode = notFoundObjectResult.StatusCode };
             }
-            else if (context.Result is ObjectResult objectResult && objectResult.StatusCode == null 
+            else if (context.Result is ObjectResult objectResult && objectResult.StatusCode == null
                 && !(objectResult.Value is ApiResult))
             {
                 var apiResult = new ApiResult<object>(true, ApiResultStatusCode.Success, objectResult.Value);

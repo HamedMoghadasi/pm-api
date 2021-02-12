@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using DataAccess.Contracts;
+﻿using DataAccess.Contracts;
 using DataAccess.DataAccess;
 using DataAccess.Models;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public class ProductRepository:Repository<Product>,IProductRepository
+    public class ProductRepository : Repository<Product>, IProductRepository
     {
         public ProductRepository(TmsManagementContext dbContext) : base(dbContext)
         {
@@ -34,5 +32,5 @@ namespace DataAccess.Repositories
 
             return data;
         }
-	}
+    }
 }

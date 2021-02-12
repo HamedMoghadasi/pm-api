@@ -1,14 +1,12 @@
 ﻿using DataAccess.DataAccess;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Identity;
 #nullable disable
 
 namespace DataAccess
 {
-    public partial class TmsManagementContext  : IdentityDbContext<ApplicationUser>
+    public partial class TmsManagementContext : IdentityDbContext<ApplicationUser>
     {
         private IConfiguration Configuration;
         public TmsManagementContext()

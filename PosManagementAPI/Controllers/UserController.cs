@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Common.Exceptions;
+﻿using Common.Exceptions;
 using Common.Utilities;
 using DataAccess.DataAccess;
 using DataAccess.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using WebFramework.Api;
 
 namespace PosManagementAPI.Controllers
